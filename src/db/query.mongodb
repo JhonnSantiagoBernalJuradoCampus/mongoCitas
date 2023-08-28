@@ -39,3 +39,42 @@ db.genero.insertMany([
     }
 ]);
 use("db_citas");
+db.createCollection("tipo_documento", {
+    validator: {
+        $jsonSchema: {
+            "bsonType": "object",
+            "required": ["tipdoc_id", "tipdoc_nombre", "tipdoc_abreviatura"],
+            "properties": {
+                "tipodoc_id": {
+                    "bsonType": "number",
+                    "description": "el tipodoc_id es incorrecto"
+                },
+                "tipdoc_nombre": {
+                    "bsonType": "string",
+                    "description": "el tipdoc_nombre es incorrecto"
+                },
+                "tipdoc_abreviatura": {
+                    "bsonType": "string",
+                    "description": "el tipdoc_abreviatura es incorrecto"
+                }
+            }
+        }
+    }
+});
+db.tipo_documento.insertMany([
+    {
+        "tipdoc_id": 1,
+        "tipdoc_nombre": "Cedula de Ciudadania",
+        "tipdoc_abreviatura": "Cc"
+    },
+    {
+        "tipdoc_id": 2,
+        "tipdoc_nombre": "Tarjeta de Identidad",
+        "tipdoc_abreviatura": "T.i"
+    },
+    {
+        "tipdoc_id": 3,
+        "tipdoc_nombre": "Pasaporte",
+        "tipdoc_abreviatura": "Past"
+    }
+]);
