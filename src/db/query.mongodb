@@ -78,3 +78,44 @@ db.tipo_documento.insertMany([
         "tipdoc_abreviatura": "Past"
     }
 ]);
+use("db_citas");
+db.createCollection("acudiente", {
+    validator: {
+        $jsonSchema: {
+            "bsonType": "object",
+            "required": ["acu_codigo", "acu_nombreCompleto", "acu_telefono", "acu_direccion"],
+            "properties": {
+                "acu_codigo": {
+                    "bsonType": "number",
+                    "description": "el acu_codigo es incorrecto"
+                },
+                "acu_nombreCompleto": {
+                    "bsonType": "string",
+                    "description": "el acu_nombreCompleto es incorrecto"
+                },
+                "acu_telefono": {
+                    "bsonType": "number",
+                    "description": "el acu_telefono es incorrecto"
+                },
+                "acu_direccion": {
+                    "bsonType": "string",
+                    "description": "el acu_direccion es incorrecto"
+                }
+            }
+        }
+    }
+});
+db.acudiente.insertMany([
+    {
+        "acu_codigo": 1,
+        "acu_nombreCompleto": "Jhon Santiago Bernal Jurado",
+        "acu_telefono": 3133860656,
+        "acu_direccion": "Piedecuesta Santander"
+    },
+    {
+        "acu_codigo": 2,
+        "acu_nombreCompleto": "James Ronald Bernal Bermudez",
+        "acu_telefono": 3118124321,
+        "acu_direccion": "Floridablanca Santander"
+    }
+]);
