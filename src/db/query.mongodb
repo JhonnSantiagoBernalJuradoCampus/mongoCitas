@@ -1,0 +1,41 @@
+use("db_citas");
+db.createCollection("genero",{
+    validator: {
+        $jsonSchema: {
+            "bsonType": "object",
+            "required": ["gen_id", "gen_nombre", "gen_abreviatura"],
+            "properties": {
+                "gen_id": {
+                    "bsonType": "number",
+                    "description": "el gen_id es incorrecto"
+                },
+                "gen_nombre": {
+                    "bsonType": "string",
+                    "description": "el gen_nombre es incorrecto"
+                },
+                "gen_abreviatura": {
+                    "bsonType": "string",
+                    "description": "el gen_abreviatura es incorrecto"
+                }
+            }
+        }
+    }
+});
+db.genero.insertMany([
+    {
+        "gen_id": 1,
+        "gen_nombre": "Masculino",
+        "gen_abreviatura": "M"
+    },
+    {
+        "gen_id": 2,
+        "gen_nombre": "Femenino",
+        "gen_abreviatura": "F"
+    },
+    {
+        "gen_id": 3,
+        "gen_nombre": "Otro",
+        "gen_abreviatura": "Otro"
+    }
+]);
+use("db_citas");
